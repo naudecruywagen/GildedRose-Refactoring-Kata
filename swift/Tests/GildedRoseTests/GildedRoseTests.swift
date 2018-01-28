@@ -30,4 +30,18 @@ class GildedRoseTests: XCTestCase {
         gildedRose.updateQuality()
         XCTAssertEqual(item.quality, 50)
     }
+    
+    func testThatSulfurasNeverDecreasesInQuality() {
+        let item = Item(name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 2)
+        let gildedRose = GildedRose(items: [item])
+        gildedRose.updateQuality()
+        XCTAssertEqual(item.quality, 2)
+    }
+    
+    func testThatSulfurasNeverHAsToBeSold() {
+        let item = Item(name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 2)
+        let gildedRose = GildedRose(items: [item])
+        gildedRose.updateQuality()
+        XCTAssertEqual(item.sellIn, 0)
+    }
 }
