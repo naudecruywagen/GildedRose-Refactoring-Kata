@@ -9,4 +9,11 @@ class GildedRoseTests: XCTestCase {
         gildedRose.updateQuality()
         XCTAssertEqual(item.quality, 4)
     }
+    
+    func testThatTheQualityOfAnItemIsNeverNegative() {
+        let item = Item(name: "Item", sellIn: 2, quality: 0)
+        let gildedRose = GildedRose(items: [item])
+        gildedRose.updateQuality()
+        XCTAssertEqual(item.quality, 0)
+    }
 }
