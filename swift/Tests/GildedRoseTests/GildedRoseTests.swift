@@ -3,7 +3,7 @@ import XCTest
 
 class GildedRoseTests: XCTestCase {
 
-    func testThatQualityDegradesTwiceAsFastAfterSellByDateHasPasses() {
+    func testThatQualityDegradesTwiceAsFastAfterSellByDateHasPassed() {
         let item = Item(name: "Item", sellIn: 0, quality: 6)
         let gildedRose = GildedRose(items: [item])
         gildedRose.updateQuality()
