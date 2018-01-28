@@ -44,4 +44,11 @@ class GildedRoseTests: XCTestCase {
         gildedRose.updateQuality()
         XCTAssertEqual(item.sellIn, 0)
     }
+    
+    func testThatBackstagePassesIncreasesInQuality() {
+        let item = Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 30, quality: 12)
+        let gildedRose = GildedRose(items: [item])
+        gildedRose.updateQuality()
+        XCTAssertEqual(item.quality, 13)
+    }
 }
