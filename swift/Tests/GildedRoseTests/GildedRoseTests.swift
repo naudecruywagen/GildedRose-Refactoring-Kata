@@ -23,4 +23,11 @@ class GildedRoseTests: XCTestCase {
         gildedRose.updateQuality()
         XCTAssertEqual(item.quality, 6)
     }
+    
+    func testThatTheQualityOfAnItemIsNeverMoreThan50() {
+        let item = Item(name: "Item", sellIn: 2, quality: 51)
+        let gildedRose = GildedRose(items: [item])
+        gildedRose.updateQuality()
+        XCTAssertEqual(item.quality, 50)
+    }
 }
