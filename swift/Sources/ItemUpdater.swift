@@ -3,6 +3,21 @@ import Foundation
 public class ItemUpdater {
     let item: Item
 
+    class func updater(with item: Item) -> ItemUpdater {
+        var itemUpdater: ItemUpdater
+        switch (item.name) {
+        case GildedRose.AgedBrie:
+            itemUpdater = AgedBrieItemUpdater(item: item)
+        case GildedRose.BackstagePasses:
+            itemUpdater = BackstagePassesItemUpdater(item: item)
+        case GildedRose.Sulfuras:
+            itemUpdater = SulfurasItemUpdater(item: item)
+        default:
+            itemUpdater = ItemUpdater(item: item)
+        }
+        return itemUpdater
+    }
+
     init(item: Item) {
         self.item = item
     }
@@ -22,6 +37,7 @@ public class ItemUpdater {
     public func decreaseSellIn(item: Item) {
         item.sellIn = item.sellIn - 1
     }
+
 
     public func updateQualityIfExpired(item: Item) {
         if (item.sellIn < 0) {

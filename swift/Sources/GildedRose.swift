@@ -14,20 +14,8 @@ public class GildedRose {
 
         for i in 0..<items.count {
             let item = items[i]
-            switch (item.name) {
-            case GildedRose.AgedBrie:
-                let agedBrieItemUpdater = AgedBrieItemUpdater(item: item)
-                agedBrieItemUpdater.updateItem()
-            case GildedRose.BackstagePasses:
-                let backstagePassesItemUpdater = BackstagePassesItemUpdater(item: item)
-                backstagePassesItemUpdater.updateItem()
-            case GildedRose.Sulfuras:
-                let sulfurasItemUpdater = SulfurasItemUpdater(item: item)
-                sulfurasItemUpdater.updateItem()
-            default:
-                let itemUpdater = ItemUpdater(item:item)
-                itemUpdater.updateItem()
-            }
+            let itemUpdater = ItemUpdater.updater(with: item)
+            itemUpdater.updateItem()
         }
     }
 }
