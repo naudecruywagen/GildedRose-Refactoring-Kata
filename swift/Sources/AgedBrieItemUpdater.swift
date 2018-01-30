@@ -13,11 +13,8 @@ public class AgedBrieItemUpdater {
     }
 
     func updateQuality(item: Item) {
-
         if (item.quality < 50) {
             item.quality = item.quality + 1
-
-
         }
     }
 
