@@ -18,6 +18,9 @@ public class GildedRose {
             case GildedRose.AgedBrie:
                 let agedBrieItemUpdater = AgedBrieItemUpdater(item: item)
                 agedBrieItemUpdater.updateItem()
+            case GildedRose.BackstagePasses:
+                let backstagePassesItemUpdater = BackstagePassesItemUpdater(item: item)
+                backstagePassesItemUpdater.updateItem()
             default:
                 updateQuality(item: item)
                 decreaseSellIn(item: item)
@@ -27,29 +30,9 @@ public class GildedRose {
     }
 
     func updateQuality(item: Item) {
-        if (item.name != GildedRose.BackstagePasses) {
-            if (item.quality > 0) {
-                if (item.name != GildedRose.Sulfuras) {
-                    item.quality = item.quality - 1
-                }
-            }
-        } else {
-            if (item.quality < 50) {
-                item.quality = item.quality + 1
-
-                if (item.name == GildedRose.BackstagePasses) {
-                    if (item.sellIn < 11) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1
-                        }
-                    }
-
-                    if (item.sellIn < 6) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1
-                        }
-                    }
-                }
+        if (item.quality > 0) {
+            if (item.name != GildedRose.Sulfuras) {
+                item.quality = item.quality - 1
             }
         }
     }
@@ -62,14 +45,10 @@ public class GildedRose {
 
     func updateQualityIfExpired(item: Item) {
         if (item.sellIn < 0) {
-            if (item.name != GildedRose.BackstagePasses) {
-                if (item.quality > 0) {
-                    if (item.name != GildedRose.Sulfuras) {
-                        item.quality = item.quality - 1
-                    }
+            if (item.quality > 0) {
+                if (item.name != GildedRose.Sulfuras) {
+                    item.quality = item.quality - 1
                 }
-            } else {
-                item.quality = item.quality - item.quality
             }
         }
     }
