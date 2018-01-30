@@ -3,6 +3,7 @@ public class GildedRose {
     static let AgedBrie = "Aged Brie"
     static let BackstagePasses = "Backstage passes to a TAFKAL80ETC concert"
     static let Sulfuras = "Sulfuras, Hand of Ragnaros"
+    static let Conjured = "Conjured"
 
     var items: [Item]
 
@@ -18,4 +19,5 @@ public class GildedRose {
             itemUpdater.updateItem()
         }
     }
+
 }

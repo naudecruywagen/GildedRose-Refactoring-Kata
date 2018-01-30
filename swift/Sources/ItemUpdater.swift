@@ -1,5 +1,3 @@
-import Foundation
-
 public class ItemUpdater {
     let item: Item
 
@@ -12,6 +10,8 @@ public class ItemUpdater {
             itemUpdater = BackstagePassesItemUpdater(item: item)
         case GildedRose.Sulfuras:
             itemUpdater = SulfurasItemUpdater(item: item)
+        case GildedRose.Conjured:
+            itemUpdater = ConjuredItemUpdater(item: item)
         default:
             itemUpdater = ItemUpdater(item: item)
         }
