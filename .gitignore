@@ -4,3 +4,6 @@
 /elixir/_build/
 .idea
 .DS_Store
+/swift/.DS_Store
+/swift/.build
+/.DS_Store
