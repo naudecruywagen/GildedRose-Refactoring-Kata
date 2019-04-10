@@ -8,3 +8,4 @@
 /swift/.build
 /.DS_Store
 *.xcuserstate
+/swift/DerivedData
