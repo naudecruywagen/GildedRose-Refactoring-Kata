@@ -88,22 +88,6 @@
 			path = GildedRoseTests;
 			sourceTree = "<group>";
 		};
-		OBJ_11 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_12 /* GildedRoseTests */,
-			);
-			name = Tests;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_12 /* GildedRoseTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = GildedRoseTests;
-			path = Tests/GildedRoseTests;
-			sourceTree = SOURCE_ROOT;
-		};
 		OBJ_14 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,7 +102,6 @@
 			children = (
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
-				OBJ_11 /* Tests */,
 				9C1F0D8A226714AD007F8B4F /* GildedRose */,
 				9C9873B32267348E005F9E91 /* GildedRoseTests */,
 				OBJ_14 /* Products */,
