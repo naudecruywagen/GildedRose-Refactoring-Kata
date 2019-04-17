@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "GildedRose::GildedRoseTests"
+               BlueprintIdentifier = "9C9873B12267348E005F9E91"
                BuildableName = "GildedRoseTests.xctest"
                BlueprintName = "GildedRoseTests"
                ReferencedContainer = "container:GildedRose.xcodeproj">
