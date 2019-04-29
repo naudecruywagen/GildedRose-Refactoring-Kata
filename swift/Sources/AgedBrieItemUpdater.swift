@@ -5,7 +5,7 @@
 import Foundation
 
 class AgedBrieItemUpdater: ItemUpdaterType {
-    public func doSomethingIfItemExpired(item: Item) {
+    func decreaseQualityIfItemExpired(item: Item) {
         if (item.sellIn < 0) {
             if (item.quality < 50) {
                 item.quality = item.quality + 1
@@ -13,11 +13,11 @@ class AgedBrieItemUpdater: ItemUpdaterType {
         }
     }
 
-    public func decreaseSellInIfNotSulfuras(item: Item) {
+    func decreaseSellIn(item: Item) {
         item.sellIn = item.sellIn - 1
     }
 
-    public func doSomething(with item: Item) {
+    func updateQuality(with item: Item) {
         if (item.quality < 50) {
             item.quality = item.quality + 1
         }

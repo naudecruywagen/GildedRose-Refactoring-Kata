@@ -5,17 +5,17 @@
 import Foundation
 
 class BackstagePassesItemUpdater: ItemUpdaterType {
-    func doSomethingIfItemExpired(item: Item) {
+    func decreaseQualityIfItemExpired(item: Item) {
         if (item.sellIn < 0) {
             item.quality = item.quality - item.quality
         }
     }
 
-    func decreaseSellInIfNotSulfuras(item: Item) {
+    func decreaseSellIn(item: Item) {
         item.sellIn = item.sellIn - 1
     }
 
-    func doSomething(with item: Item) {
+    func updateQuality(with item: Item) {
         if (item.quality < 50) {
             item.quality = item.quality + 1
 

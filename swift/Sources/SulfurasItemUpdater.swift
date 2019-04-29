@@ -5,15 +5,15 @@
 import Foundation
 
 class SulfurasItemUpdater: ItemUpdaterType {
-    func doSomethingIfItemExpired(item: Item) {
+    func decreaseQualityIfItemExpired(item: Item) {
         // do nothing
     }
 
-    func decreaseSellInIfNotSulfuras(item: Item) {
+    func decreaseSellIn(item: Item) {
         // do nothing
     }
 
-    func doSomething(with item: Item) {
+    func updateQuality(with item: Item) {
         // do nothing
     }
 }
