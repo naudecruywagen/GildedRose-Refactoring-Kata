@@ -10,7 +10,13 @@ class ItemUpdater {
     static let sulfuras = "Sulfuras, Hand of Ragnaros"
 
     class func createWith(item: Item) -> ItemUpdater {
-        let itemUpdater = ItemUpdater()
+        let itemUpdater: ItemUpdater
+        switch item.name {
+        case agedBrie:
+            itemUpdater = AgedBrieItemUpdater()
+        default:
+            itemUpdater = ItemUpdater()
+        }
         return itemUpdater
     }
 
@@ -22,20 +28,14 @@ class ItemUpdater {
 
     public func doSomethingIfItemExpired(item: Item) {
         if (item.sellIn < 0) {
-            if (item.name != ItemUpdater.agedBrie) {
-                if (item.name != ItemUpdater.backstagePasses) {
-                    if (item.quality > 0) {
-                        if (item.name != ItemUpdater.sulfuras) {
-                            item.quality = item.quality - 1
-                        }
+            if (item.name != ItemUpdater.backstagePasses) {
+                if (item.quality > 0) {
+                    if (item.name != ItemUpdater.sulfuras) {
+                        item.quality = item.quality - 1
                     }
-                } else {
-                    item.quality = item.quality - item.quality
                 }
             } else {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1
-                }
+                item.quality = item.quality - item.quality
             }
         }
     }
@@ -47,7 +47,7 @@ class ItemUpdater {
     }
 
     public func doSomething(with item: Item) {
-        if (item.name != ItemUpdater.agedBrie && item.name != ItemUpdater.backstagePasses) {
+        if (item.name != ItemUpdater.backstagePasses) {
             if (item.quality > 0) {
                 if (item.name != ItemUpdater.sulfuras) {
                     item.quality = item.quality - 1

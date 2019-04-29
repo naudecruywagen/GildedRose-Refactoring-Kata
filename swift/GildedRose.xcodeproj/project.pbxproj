@@ -20,6 +20,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		63BF59E3026B358CA25D51C3 /* AgedBrieItemUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BF57BF0AC49CD7ADC15C0A /* AgedBrieItemUpdater.swift */; };
 		63BF5ED5CC6043A04161396E /* ItemUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BF52F44F11DB02BFE36F94 /* ItemUpdater.swift */; };
 		9C1F0D8D226714AD007F8B4F /* GildedRose.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C1F0D8B226714AD007F8B4F /* GildedRose.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C1F0D91226714CA007F8B4F /* GildedRose.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* GildedRose.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		63BF52F44F11DB02BFE36F94 /* ItemUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemUpdater.swift; sourceTree = "<group>"; };
+		63BF57BF0AC49CD7ADC15C0A /* AgedBrieItemUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgedBrieItemUpdater.swift; sourceTree = "<group>"; };
 		9C1F0D89226714AD007F8B4F /* GildedRose.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GildedRose.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1F0D8B226714AD007F8B4F /* GildedRose.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GildedRose.h; sourceTree = "<group>"; };
 		9C1F0D8C226714AD007F8B4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				OBJ_9 /* Item.swift */,
 				OBJ_10 /* main.swift */,
 				63BF52F44F11DB02BFE36F94 /* ItemUpdater.swift */,
+				63BF57BF0AC49CD7ADC15C0A /* AgedBrieItemUpdater.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -251,6 +254,7 @@
 				9C1F0D91226714CA007F8B4F /* GildedRose.swift in Sources */,
 				9C1F0D92226714CA007F8B4F /* Item.swift in Sources */,
 				63BF5ED5CC6043A04161396E /* ItemUpdater.swift in Sources */,
+				63BF59E3026B358CA25D51C3 /* AgedBrieItemUpdater.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
