@@ -11,7 +11,7 @@ protocol ItemUpdater {
 protocol ItemUpdatePerformer {
     func decreaseQualityIfItemExpired(item: Item)
     func decreaseSellIn(item: Item)
-    func updateQuality(with item: Item)
+    func updateQuality(of item: Item)
     func decreaseQuality(of item: Item)
 }
 
@@ -20,7 +20,7 @@ typealias ItemUpdaterType = ItemUpdater & ItemUpdatePerformer
 extension ItemUpdater where Self: ItemUpdatePerformer {
 
     func update(item: Item) {
-        updateQuality(with: item)
+        updateQuality(of: item)
         decreaseSellIn(item: item)
         decreaseQualityIfItemExpired(item: item)
     }
@@ -35,7 +35,7 @@ extension ItemUpdater where Self: ItemUpdatePerformer {
         item.sellIn = item.sellIn - 1
     }
 
-    func updateQuality(with item: Item) {
+    func updateQuality(of item: Item) {
         decreaseQuality(of: item)
     }
 

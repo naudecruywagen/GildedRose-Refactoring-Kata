@@ -13,7 +13,7 @@ class SulfurasItemUpdater: ItemUpdaterType {
         // do nothing
     }
 
-    func updateQuality(with item: Item) {
+    func updateQuality(of item: Item) {
         // do nothing
     }
 }

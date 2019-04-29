@@ -11,7 +11,7 @@ class BackstagePassesItemUpdater: ItemUpdaterType {
         }
     }
 
-    func updateQuality(with item: Item) {
+    func updateQuality(of item: Item) {
         if (item.quality < 50) {
             item.quality = item.quality + 1
 

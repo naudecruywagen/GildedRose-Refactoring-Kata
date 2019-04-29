@@ -5,7 +5,7 @@
 import Foundation
 
 class ConjuredItemUpdater: ItemUpdaterType {
-    func updateQuality(with item: Item) {
+    func updateQuality(of item: Item) {
         decreaseQuality(of: item)
         decreaseQuality(of: item)
     }
