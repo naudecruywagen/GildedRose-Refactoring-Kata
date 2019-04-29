@@ -26,14 +26,10 @@ extension ItemUpdater where Self: ItemUpdatePerformer {
 
     func doSomethingIfItemExpired(item: Item) {
         if (item.sellIn < 0) {
-            if (item.name != ItemUpdaterFactory.backstagePasses) {
-                if (item.quality > 0) {
-                    if (item.name != ItemUpdaterFactory.sulfuras) {
-                        item.quality = item.quality - 1
-                    }
+            if (item.quality > 0) {
+                if (item.name != ItemUpdaterFactory.sulfuras) {
+                    item.quality = item.quality - 1
                 }
-            } else {
-                item.quality = item.quality - item.quality
             }
         }
     }
@@ -45,29 +41,9 @@ extension ItemUpdater where Self: ItemUpdatePerformer {
     }
 
     func doSomething(with item: Item) {
-        if (item.name != ItemUpdaterFactory.backstagePasses) {
-            if (item.quality > 0) {
-                if (item.name != ItemUpdaterFactory.sulfuras) {
-                    item.quality = item.quality - 1
-                }
-            }
-        } else {
-            if (item.quality < 50) {
-                item.quality = item.quality + 1
-
-                if (item.name == ItemUpdaterFactory.backstagePasses) {
-                    if (item.sellIn < 11) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1
-                        }
-                    }
-
-                    if (item.sellIn < 6) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1
-                        }
-                    }
-                }
+        if (item.quality > 0) {
+            if (item.name != ItemUpdaterFactory.sulfuras) {
+                item.quality = item.quality - 1
             }
         }
     }
@@ -84,6 +60,8 @@ class ItemUpdaterFactory: ItemUpdaterType {
         switch item.name {
         case agedBrie:
             itemUpdater = AgedBrieItemUpdater()
+        case backstagePasses:
+            itemUpdater = BackstagePassesItemUpdater()
         default:
             itemUpdater = ItemUpdaterFactory()
         }

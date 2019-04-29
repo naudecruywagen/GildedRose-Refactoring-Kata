@@ -14,9 +14,7 @@ class AgedBrieItemUpdater: ItemUpdaterType {
     }
 
     public func decreaseSellInIfNotSulfuras(item: Item) {
-        if (item.name != ItemUpdaterFactory.sulfuras) {
-            item.sellIn = item.sellIn - 1
-        }
+        item.sellIn = item.sellIn - 1
     }
 
     public func doSomething(with item: Item) {
