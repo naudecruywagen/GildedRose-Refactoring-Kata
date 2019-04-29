@@ -11,9 +11,7 @@ public class GildedRose {
         for i in 0..<items.count {
             let item = items[i]
             let itemUpdater = ItemUpdater.createWith(item: item)
-            itemUpdater.doSomething(with: item)
-            itemUpdater.decreaseSellInIfNotSulfuras(item: item)
-            itemUpdater.doSomethingIfItemExpired(item: item)
+            itemUpdater.update(item: item)
         }
     }
 }

@@ -14,6 +14,12 @@ class ItemUpdater {
         return itemUpdater
     }
 
+    func update(item: Item) {
+        doSomething(with: item)
+        decreaseSellInIfNotSulfuras(item: item)
+        doSomethingIfItemExpired(item: item)
+    }
+
     public func doSomethingIfItemExpired(item: Item) {
         if (item.sellIn < 0) {
             if (item.name != ItemUpdater.agedBrie) {
