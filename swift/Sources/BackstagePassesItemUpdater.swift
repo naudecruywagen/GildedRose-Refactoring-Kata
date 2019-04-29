@@ -11,10 +11,6 @@ class BackstagePassesItemUpdater: ItemUpdaterType {
         }
     }
 
-    func decreaseSellIn(item: Item) {
-        item.sellIn = item.sellIn - 1
-    }
-
     func updateQuality(with item: Item) {
         if (item.quality < 50) {
             item.quality = item.quality + 1
