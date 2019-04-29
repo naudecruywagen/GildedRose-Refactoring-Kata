@@ -13,31 +13,7 @@ public class GildedRose {
 
         for i in 0..<items.count {
             let item = items[i]
-            if (item.name != GildedRose.agedBrie && item.name != GildedRose.backstagePasses) {
-                if (item.quality > 0) {
-                    if (item.name != GildedRose.sulfuras) {
-                        item.quality = item.quality - 1
-                    }
-                }
-            } else {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1
-
-                    if (item.name == GildedRose.backstagePasses) {
-                        if (item.sellIn < 11) {
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1
-                            }
-                        }
-
-                        if (item.sellIn < 6) {
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1
-                            }
-                        }
-                    }
-                }
-            }
+            doSomething(with: item)
 
             if (item.name != GildedRose.sulfuras) {
                 item.sellIn = item.sellIn - 1
@@ -57,6 +33,34 @@ public class GildedRose {
                 } else {
                     if (item.quality < 50) {
                         item.quality = item.quality + 1
+                    }
+                }
+            }
+        }
+    }
+
+    private func doSomething(with item: Item) {
+        if (item.name != GildedRose.agedBrie && item.name != GildedRose.backstagePasses) {
+            if (item.quality > 0) {
+                if (item.name != GildedRose.sulfuras) {
+                    item.quality = item.quality - 1
+                }
+            }
+        } else {
+            if (item.quality < 50) {
+                item.quality = item.quality + 1
+
+                if (item.name == GildedRose.backstagePasses) {
+                    if (item.sellIn < 11) {
+                        if (item.quality < 50) {
+                            item.quality = item.quality + 1
+                        }
+                    }
+
+                    if (item.sellIn < 6) {
+                        if (item.quality < 50) {
+                            item.quality = item.quality + 1
+                        }
                     }
                 }
             }
