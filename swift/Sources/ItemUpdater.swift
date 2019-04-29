@@ -27,24 +27,18 @@ extension ItemUpdater where Self: ItemUpdatePerformer {
     func doSomethingIfItemExpired(item: Item) {
         if (item.sellIn < 0) {
             if (item.quality > 0) {
-                if (item.name != ItemUpdaterFactory.sulfuras) {
-                    item.quality = item.quality - 1
-                }
+                item.quality = item.quality - 1
             }
         }
     }
 
     func decreaseSellInIfNotSulfuras(item: Item) {
-        if (item.name != ItemUpdaterFactory.sulfuras) {
-            item.sellIn = item.sellIn - 1
-        }
+        item.sellIn = item.sellIn - 1
     }
 
     func doSomething(with item: Item) {
         if (item.quality > 0) {
-            if (item.name != ItemUpdaterFactory.sulfuras) {
-                item.quality = item.quality - 1
-            }
+            item.quality = item.quality - 1
         }
     }
 }
@@ -62,6 +56,8 @@ class ItemUpdaterFactory: ItemUpdaterType {
             itemUpdater = AgedBrieItemUpdater()
         case backstagePasses:
             itemUpdater = BackstagePassesItemUpdater()
+        case sulfuras:
+            itemUpdater = SulfurasItemUpdater()
         default:
             itemUpdater = ItemUpdaterFactory()
         }
