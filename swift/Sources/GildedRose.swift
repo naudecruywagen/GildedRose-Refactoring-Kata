@@ -10,7 +10,7 @@ public class GildedRose {
 
         for i in 0..<items.count {
             let item = items[i]
-            let itemUpdater = ItemUpdater.createWith(item: item)
+            let itemUpdater = ItemUpdaterFactory.createWith(item: item)
             itemUpdater.update(item: item)
         }
     }

@@ -4,21 +4,19 @@
 
 import Foundation
 
-class ItemUpdater {
-    static let agedBrie = "Aged Brie"
-    static let backstagePasses = "Backstage passes to a TAFKAL80ETC concert"
-    static let sulfuras = "Sulfuras, Hand of Ragnaros"
+protocol ItemUpdater {
+    func update(item: Item)
+}
 
-    class func createWith(item: Item) -> ItemUpdater {
-        let itemUpdater: ItemUpdater
-        switch item.name {
-        case agedBrie:
-            itemUpdater = AgedBrieItemUpdater()
-        default:
-            itemUpdater = ItemUpdater()
-        }
-        return itemUpdater
-    }
+protocol ItemUpdatePerformer {
+    func doSomethingIfItemExpired(item: Item)
+    func decreaseSellInIfNotSulfuras(item: Item)
+    func doSomething(with item: Item)
+}
+
+typealias ItemUpdaterType = ItemUpdater & ItemUpdatePerformer
+
+extension ItemUpdater where Self: ItemUpdatePerformer {
 
     func update(item: Item) {
         doSomething(with: item)
@@ -26,11 +24,11 @@ class ItemUpdater {
         doSomethingIfItemExpired(item: item)
     }
 
-    public func doSomethingIfItemExpired(item: Item) {
+    func doSomethingIfItemExpired(item: Item) {
         if (item.sellIn < 0) {
-            if (item.name != ItemUpdater.backstagePasses) {
+            if (item.name != ItemUpdaterFactory.backstagePasses) {
                 if (item.quality > 0) {
-                    if (item.name != ItemUpdater.sulfuras) {
+                    if (item.name != ItemUpdaterFactory.sulfuras) {
                         item.quality = item.quality - 1
                     }
                 }
@@ -40,16 +38,16 @@ class ItemUpdater {
         }
     }
 
-    public func decreaseSellInIfNotSulfuras(item: Item) {
-        if (item.name != ItemUpdater.sulfuras) {
+    func decreaseSellInIfNotSulfuras(item: Item) {
+        if (item.name != ItemUpdaterFactory.sulfuras) {
             item.sellIn = item.sellIn - 1
         }
     }
 
-    public func doSomething(with item: Item) {
-        if (item.name != ItemUpdater.backstagePasses) {
+    func doSomething(with item: Item) {
+        if (item.name != ItemUpdaterFactory.backstagePasses) {
             if (item.quality > 0) {
-                if (item.name != ItemUpdater.sulfuras) {
+                if (item.name != ItemUpdaterFactory.sulfuras) {
                     item.quality = item.quality - 1
                 }
             }
@@ -57,7 +55,7 @@ class ItemUpdater {
             if (item.quality < 50) {
                 item.quality = item.quality + 1
 
-                if (item.name == ItemUpdater.backstagePasses) {
+                if (item.name == ItemUpdaterFactory.backstagePasses) {
                     if (item.sellIn < 11) {
                         if (item.quality < 50) {
                             item.quality = item.quality + 1
@@ -72,5 +70,23 @@ class ItemUpdater {
                 }
             }
         }
+    }
+}
+
+class ItemUpdaterFactory: ItemUpdaterType {
+
+    static let agedBrie = "Aged Brie"
+    static let backstagePasses = "Backstage passes to a TAFKAL80ETC concert"
+    static let sulfuras = "Sulfuras, Hand of Ragnaros"
+
+    class func createWith(item: Item) -> ItemUpdater {
+        let itemUpdater: ItemUpdater
+        switch item.name {
+        case agedBrie:
+            itemUpdater = AgedBrieItemUpdater()
+        default:
+            itemUpdater = ItemUpdaterFactory()
+        }
+        return itemUpdater
     }
 }

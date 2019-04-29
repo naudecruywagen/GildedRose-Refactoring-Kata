@@ -4,8 +4,8 @@
 
 import Foundation
 
-class AgedBrieItemUpdater: ItemUpdater {
-    public override func doSomethingIfItemExpired(item: Item) {
+class AgedBrieItemUpdater: ItemUpdaterType {
+    public func doSomethingIfItemExpired(item: Item) {
         if (item.sellIn < 0) {
             if (item.quality < 50) {
                 item.quality = item.quality + 1
@@ -13,13 +13,13 @@ class AgedBrieItemUpdater: ItemUpdater {
         }
     }
 
-    public override func decreaseSellInIfNotSulfuras(item: Item) {
-        if (item.name != ItemUpdater.sulfuras) {
+    public func decreaseSellInIfNotSulfuras(item: Item) {
+        if (item.name != ItemUpdaterFactory.sulfuras) {
             item.sellIn = item.sellIn - 1
         }
     }
 
-    override public func doSomething(with item: Item) {
+    public func doSomething(with item: Item) {
         if (item.quality < 50) {
             item.quality = item.quality + 1
         }
