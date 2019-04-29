@@ -12,6 +12,7 @@ protocol ItemUpdatePerformer {
     func decreaseQualityIfItemExpired(item: Item)
     func decreaseSellIn(item: Item)
     func updateQuality(with item: Item)
+    func decreaseQuality(of item: Item)
 }
 
 typealias ItemUpdaterType = ItemUpdater & ItemUpdatePerformer
@@ -26,9 +27,7 @@ extension ItemUpdater where Self: ItemUpdatePerformer {
 
     func decreaseQualityIfItemExpired(item: Item) {
         if (item.sellIn < 0) {
-            if (item.quality > 0) {
-                item.quality = item.quality - 1
-            }
+            decreaseQuality(of: item)
         }
     }
 
@@ -37,6 +36,10 @@ extension ItemUpdater where Self: ItemUpdatePerformer {
     }
 
     func updateQuality(with item: Item) {
+        decreaseQuality(of: item)
+    }
+
+    func decreaseQuality(of item: Item) {
         if (item.quality > 0) {
             item.quality = item.quality - 1
         }
@@ -48,6 +51,7 @@ class ItemUpdaterFactory: ItemUpdaterType {
     static let agedBrie = "Aged Brie"
     static let backstagePasses = "Backstage passes to a TAFKAL80ETC concert"
     static let sulfuras = "Sulfuras, Hand of Ragnaros"
+    static let conjured = "Conjured"
 
     class func createWith(item: Item) -> ItemUpdater {
         let itemUpdater: ItemUpdater
@@ -58,6 +62,8 @@ class ItemUpdaterFactory: ItemUpdaterType {
             itemUpdater = BackstagePassesItemUpdater()
         case sulfuras:
             itemUpdater = SulfurasItemUpdater()
+        case conjured:
+            itemUpdater = ConjuredItemUpdater()
         default:
             itemUpdater = ItemUpdaterFactory()
         }
