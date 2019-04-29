@@ -13,63 +13,10 @@ public class GildedRose {
 
         for i in 0..<items.count {
             let item = items[i]
-            doSomething(with: item)
-            decreaseSellInIfNotSulfuras(item: item)
-            doSomethingIfItemExpired(item: item)
-        }
-    }
-
-    private func doSomethingIfItemExpired(item: Item) {
-        if (item.sellIn < 0) {
-            if (item.name != GildedRose.agedBrie) {
-                if (item.name != GildedRose.backstagePasses) {
-                    if (item.quality > 0) {
-                        if (item.name != GildedRose.sulfuras) {
-                            item.quality = item.quality - 1
-                        }
-                    }
-                } else {
-                    item.quality = item.quality - item.quality
-                }
-            } else {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1
-                }
-            }
-        }
-    }
-
-    private func decreaseSellInIfNotSulfuras(item: Item) {
-        if (item.name != GildedRose.sulfuras) {
-            item.sellIn = item.sellIn - 1
-        }
-    }
-
-    private func doSomething(with item: Item) {
-        if (item.name != GildedRose.agedBrie && item.name != GildedRose.backstagePasses) {
-            if (item.quality > 0) {
-                if (item.name != GildedRose.sulfuras) {
-                    item.quality = item.quality - 1
-                }
-            }
-        } else {
-            if (item.quality < 50) {
-                item.quality = item.quality + 1
-
-                if (item.name == GildedRose.backstagePasses) {
-                    if (item.sellIn < 11) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1
-                        }
-                    }
-
-                    if (item.sellIn < 6) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1
-                        }
-                    }
-                }
-            }
+            let itemUpdater = ItemUpdater.createWith(item: item)
+            itemUpdater.doSomething(with: item)
+            itemUpdater.decreaseSellInIfNotSulfuras(item: item)
+            itemUpdater.doSomethingIfItemExpired(item: item)
         }
     }
 }
